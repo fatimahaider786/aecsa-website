@@ -64,6 +64,31 @@ The whole site content (phone numbers, address, social links) lives in
 > Note: the database (Prisma) files are part of the starter template but the
 > homepage does not use them — you can safely ignore the `prisma/` folder.
 
+## Deploy on Vercel
+
+The repo deploys as a standard Next.js project. `vercel.json` already declares
+the framework, install command and build command, so nothing has to be set by
+hand — but if the Vercel project was created before those files existed, check
+the project settings once:
+
+| Setting | Value |
+| --- | --- |
+| Framework Preset | **Next.js** |
+| Root Directory | `.` (empty) |
+| Build Command | `next build` (or leave *default*) |
+| Output Directory | leave **empty** (do **not** put `public` or `.next`) |
+| Install Command | `npm install` (or leave *default*) |
+| Node.js Version | 20.x or newer |
+
+After deploying, open the project URL. `/` must return the homepage, and
+`/api` must return `{"message":"Hello, world!"}`.
+
+> The `prisma/` folder and `src/lib/db.ts` are unused starter leftovers. The
+> `.env` file is **not** uploaded (it is in `.gitignore`); the homepage needs no
+> environment variables. Do not point `DATABASE_URL` at SQLite on Vercel —
+> serverless storage is read-only, so a real Postgres database is required if
+> bookings ever need to be stored.
+
 ## Troubleshooting
 - **`npm not recognized`** → install Node.js and restart VS Code.
 - **Port 3000 already in use** → run `npm run dev -- -p 3001` and open http://localhost:3001
