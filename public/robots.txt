@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# deploy-check-2026-11-18
